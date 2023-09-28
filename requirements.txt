@@ -10,6 +10,7 @@ click
 colorama
 Flask
 frozenlist
+gunicorn
 idna
 importlib-metadata
 itsdangerous
@@ -17,6 +18,7 @@ Jinja2
 MarkupSafe
 multidict
 openai
+packaging
 PyJWT
 python-dotenv
 pytz
