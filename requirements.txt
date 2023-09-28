@@ -1,6 +1,7 @@
 aiohttp
 aiohttp-retry
 aiosignal
+asgiref
 async-timeout
 attrs
 blinker
@@ -25,6 +26,7 @@ pytz
 requests
 tqdm
 twilio
+typing_extensions
 urllib3
 Werkzeug
 yarl
