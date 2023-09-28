@@ -50,7 +50,8 @@ def receive_message():
     response_msg = chatgpt_msg(incoming_message)
     # res = send_message(sender_phone_number, response_msg)
     # print(res)
-    split_reply(response_msg,sender_phone_number)
+    # split_reply(response_msg,sender_phone_number)
+    send_message(sender_phone_number, response_msg)
     return "200"
 
 
