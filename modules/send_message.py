@@ -14,12 +14,11 @@ FROM = 'whatsapp:+14155238886'
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 
-def send_message(sender_id, message):
+async def send_message(sender_id, message):
     try:
-        res = client.messages.create(
+        res = await client.messages.create(
             body=message,
             from_=FROM,
-            # to=f'whatsapp:+{sender_id}'
             to=f'{sender_id}'
         )
         return res

@@ -4,6 +4,8 @@ from modules.send_message import send_message
 import openai
 from dotenv import load_dotenv
 import os
+import httpx
+import asyncio
 
 load_dotenv()
 
@@ -19,7 +21,7 @@ def chatgpt_msg(user_message):
     assistant_reply = response['choices'][0]['message']['content']
     return assistant_reply
 
-def split_reply(assistant_reply,sender_phone_number):
+async def split_reply(assistant_reply,sender_phone_number):
     message_length = len(assistant_reply)
     segment_length = 320
 
@@ -34,21 +36,19 @@ def split_reply(assistant_reply,sender_phone_number):
             message_segments.append(segment)
         
         for segment in message_segments:
-            res = send_message(sender_phone_number, segment)
+            res = await send_message(sender_phone_number, segment)
             print(res)
     else:
-        res = send_message(sender_phone_number, assistant_reply)
+        res = await send_message(sender_phone_number, assistant_reply)
         print(res)
 
 @app.route('/whatsapp', methods=['GET', 'POST'])
-def receive_message():
+async def receive_message():
     incoming_message = request.values.get('Body', None)
     sender_phone_number = request.values.get('From', None)
     print(sender_phone_number)
     response_msg = chatgpt_msg(incoming_message)
-    # res = send_message(sender_phone_number, response_msg)
-    # print(res)
-    split_reply(response_msg,sender_phone_number)
+    await split_reply(response_msg,sender_phone_number)
     return "200"
 
 
