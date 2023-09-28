@@ -19,4 +19,35 @@ def chatgpt_msg(user_message):
     assistant_reply = response['choices'][0]['message']['content']
     return assistant_reply
 
-print(chatgpt_msg("Hello"))
+def split_reply(assistant_reply):
+    message_length = len(assistant_reply)
+    segment_length = 320
+
+    if message_length > segment_length:
+        num_segments = (message_length + segment_length - 1) // segment_length  # Use integer division
+        message_segments = []
+
+        for i in range(num_segments):
+            start = i * segment_length
+            end = (i + 1) * segment_length
+            segment = assistant_reply[start:end]
+            message_segments.append(segment)
+        
+        for segment in message_segments:
+            print(f'{segment} \n')
+    else:
+        print(assistant_reply)
+
+
+
+
+
+
+assistant_reply = chatgpt_msg("Python automation project ideas, in more than 500 words")
+
+split_reply(assistant_reply)
+
+
+
+
+# print(chatgpt_msg("Hello"))
