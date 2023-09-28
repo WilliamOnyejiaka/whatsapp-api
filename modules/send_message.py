@@ -7,8 +7,8 @@ from twilio.base.exceptions import TwilioRestException
 
 load_dotenv()
 
-ACCOUNT_SID = 'ACf97600c1e08cd2f7abb4038da1f75d3f'
-AUTH_TOKEN = 'd5ff7ab575c9a67523bec05043e256c9'
+ACCOUNT_SID = os.environ.get("ACCOUNT_SID")
+AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 FROM = 'whatsapp:+14155238886'
 
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
