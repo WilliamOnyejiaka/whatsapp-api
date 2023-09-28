@@ -4,8 +4,6 @@ from modules.send_message import send_message
 import openai
 from dotenv import load_dotenv
 import os
-import httpx
-import asyncio
 
 load_dotenv()
 
