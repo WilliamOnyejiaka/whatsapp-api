@@ -10,8 +10,7 @@ load_dotenv()
 app = flask.Flask(__name__)
 
 def chatgpt_msg(user_message):
-    # api_key = os.environ.get("OPENAI_KEY")
-    api_key = "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"
+    api_key = os.environ.get("OPENAI_KEY")
     openai.api_key = api_key
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
